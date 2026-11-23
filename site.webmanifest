@@ -1,0 +1,12 @@
+{
+  "name": "NEPO Café · Pozuelo Coffee House",
+  "short_name": "NEPO",
+  "lang": "es",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#F7F4EF",
+  "theme_color": "#F7F4EF",
+  "icons": [
+    { "src": "/favicon-192.png", "sizes": "192x192", "type": "image/png" }
+  ]
+}

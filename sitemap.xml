@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <!-- legal.html no se incluye: es noindex -->
+  <url>
+    <loc>https://nepo.cafe/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <image:image><image:loc>https://nepo.cafe/assets/img/tostadas-aguacate-736.jpg</image:loc></image:image>
+    <image:image><image:loc>https://nepo.cafe/assets/img/espresso-portafiltro-1130.jpg</image:loc></image:image>
+    <image:image><image:loc>https://nepo.cafe/assets/img/fachada-320.jpg</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://nepo.cafe/carta/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <image:image><image:loc>https://nepo.cafe/assets/img/tostadas-aguacate-736.jpg</image:loc></image:image>
+    <image:image><image:loc>https://nepo.cafe/assets/img/bolleria-640.jpg</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://nepo.cafe/nosotros/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <image:image><image:loc>https://nepo.cafe/assets/img/espresso-portafiltro-1130.jpg</image:loc></image:image>
+    <image:image><image:loc>https://nepo.cafe/assets/img/tueste-1080.jpg</image:loc></image:image>
+    <image:image><image:loc>https://nepo.cafe/assets/img/rama-cafeto-960.jpg</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://nepo.cafe/visitanos/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <image:image><image:loc>https://nepo.cafe/assets/img/fachada-320.jpg</image:loc></image:image>
+  </url>
+</urlset>

@@ -1,0 +1,453 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<title>Propuesta para NEPO Café</title>
+<style>
+@font-face { font-family: "Neuton"; font-style: normal; font-weight: 400; src: url("../assets/fonts/neuton-400-latin.woff2") format("woff2"); }
+@font-face { font-family: "Neuton"; font-style: italic; font-weight: 400; src: url("../assets/fonts/neuton-400i-latin.woff2") format("woff2"); }
+@font-face { font-family: "Plus Jakarta Sans"; font-style: normal; font-weight: 300 700; src: url("../assets/fonts/jakarta-latin.woff2") format("woff2"); }
+@font-face { font-family: "Plus Jakarta Sans"; font-style: normal; font-weight: 300 700; src: url("../assets/fonts/jakarta-latin-ext.woff2") format("woff2"); unicode-range: U+0100-02BA, U+2020, U+20A0-20AB, U+20AD-20C0; }
+
+@page { size: A4; margin: 0; }
+:root {
+  --paper: #F7F4EF; --sand: #EFECE6; --sand-2: #E6E1D8; --ink: #1C1917; --ink-soft: #57514B;
+  --espresso: #9C6644; --espresso-text: #8A5A3C; --crema: #D7A982; --leaf: #4A5D4E; --line: rgba(28,25,23,.14);
+  --serif: "Neuton", Georgia, serif; --sans: "Plus Jakarta Sans", system-ui, sans-serif;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; background: #ccc; }
+body { font-family: var(--sans); color: var(--ink); font-size: 10.2pt; line-height: 1.55; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+h1, h2, h3, h4, p, ul, ol { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
+img { display: block; max-width: 100%; }
+em { font-style: italic; }
+
+.page {
+  width: 210mm; height: 297mm; overflow: hidden; position: relative;
+  background: var(--paper); padding: 18mm 18mm 16mm;
+  margin: 0 auto 10mm; page-break-after: always; break-after: page;
+  display: flex; flex-direction: column;
+}
+@media print { html, body { background: none; } .page { margin: 0; } }
+
+/* Cabecera y pie de cada página */
+.top { display: flex; justify-content: space-between; align-items: baseline; font-size: 7.4pt; letter-spacing: .2em; text-transform: uppercase; color: var(--espresso-text); padding-bottom: 5mm; border-bottom: 1px solid var(--line); margin-bottom: 10mm; }
+.top b { font-family: var(--serif); font-weight: 400; font-size: 11pt; letter-spacing: .32em; color: var(--ink); }
+.foot { margin-top: auto; display: flex; justify-content: space-between; font-size: 7.4pt; color: var(--ink-soft); padding-top: 4mm; border-top: 1px solid var(--line); }
+
+.eyebrow { font-size: 7.6pt; letter-spacing: .22em; text-transform: uppercase; color: var(--espresso-text); margin-bottom: 3mm; }
+.h1 { font-family: var(--serif); font-weight: 400; font-size: 34pt; line-height: 1; letter-spacing: -.01em; }
+.h2 { font-family: var(--serif); font-weight: 400; font-size: 26pt; line-height: 1.02; letter-spacing: -.01em; margin-bottom: 5mm; }
+.h1 em, .h2 em { color: var(--espresso); }
+.h3 { font-family: var(--serif); font-weight: 400; font-size: 14.5pt; line-height: 1.1; margin-bottom: 1.6mm; }
+.lead { font-size: 11.4pt; color: var(--ink-soft); line-height: 1.55; max-width: 150mm; }
+.soft { color: var(--ink-soft); }
+.small { font-size: 8.4pt; }
+.num { font-family: var(--serif); color: var(--espresso-text); font-size: 10.5pt; }
+.shot { border-radius: 3.5mm; overflow: hidden; box-shadow: 0 2mm 7mm rgba(28,25,23,.16); border: 1px solid var(--line); }
+.phone { border-radius: 6mm; overflow: hidden; border: 2.2mm solid var(--ink); box-shadow: 0 2mm 7mm rgba(28,25,23,.2); }
+.card { background: var(--sand-2); border-radius: 3.5mm; padding: 5.5mm; }
+.rule { border-top: 1px solid var(--line); }
+.fill { display: inline-block; min-width: 55mm; border-bottom: 1px dotted var(--ink-soft); color: var(--ink-soft); font-size: 8pt; line-height: 1.2; vertical-align: bottom; }
+
+/* ---------- 1. Portada ---------- */
+.cover { padding: 0; background: var(--ink); color: var(--paper); }
+.cover__img { height: 168mm; position: relative; }
+.cover__img img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 42%; }
+.cover__img::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(28,25,23,.55) 0%, rgba(28,25,23,0) 22%, rgba(28,25,23,0) 55%, var(--ink)); }
+.cover__brand { position: absolute; top: 16mm; left: 18mm; right: 18mm; display: flex; justify-content: space-between; align-items: baseline; z-index: 2; }
+.cover__brand b { font-family: var(--serif); font-weight: 400; font-size: 15pt; letter-spacing: .42em; }
+.cover__brand span { font-size: 7.6pt; letter-spacing: .22em; text-transform: uppercase; }
+.cover__body { padding: 0 18mm 16mm; margin-top: -26mm; position: relative; z-index: 2; flex: 1; display: flex; flex-direction: column; }
+.cover .eyebrow { color: var(--crema); }
+.cover__title { font-family: var(--serif); font-weight: 400; font-size: 44pt; line-height: .98; letter-spacing: -.015em; margin-bottom: 6mm; }
+.cover__title em { color: var(--crema); }
+.cover__lead { font-size: 12pt; line-height: 1.5; color: rgba(247,244,239,.82); max-width: 140mm; }
+.cover__meta { margin-top: auto; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6mm; padding-top: 6mm; border-top: 1px solid rgba(247,244,239,.2); font-size: 8.6pt; }
+.cover__meta p:first-child { font-size: 7pt; letter-spacing: .2em; text-transform: uppercase; color: var(--crema); margin-bottom: 1.2mm; }
+.cover .fill { border-color: rgba(247,244,239,.5); color: rgba(247,244,239,.6); min-width: 45mm; }
+
+/* ---------- 2. Resumen ---------- */
+.three { display: grid; grid-template-columns: repeat(3, 1fr); gap: 5mm; margin: 9mm 0 10mm; }
+.three .card { padding: 6mm 5.5mm; }
+.big { font-family: var(--serif); font-size: 30pt; line-height: 1; color: var(--espresso); margin-bottom: 3mm; }
+.seen { display: grid; grid-template-columns: 1fr 1fr; gap: 5mm 9mm; }
+.seen li { padding-top: 3.2mm; border-top: 1px solid var(--line); }
+.seen li .h3 { font-size: 12.5pt; }
+.tick { color: var(--leaf); font-weight: 600; }
+.cross { color: #A0533A; font-weight: 600; }
+
+/* ---------- 3-4. La web ---------- */
+.feat { display: grid; grid-template-columns: 1fr 1fr; gap: 4.5mm 8mm; margin-top: 8mm; }
+.feat li { display: grid; grid-template-columns: 9mm 1fr; padding-top: 3mm; border-top: 1px solid var(--line); }
+.feat li .h3 { font-size: 12pt; margin-bottom: .8mm; }
+.feat p { font-size: 9pt; color: var(--ink-soft); line-height: 1.5; }
+.phones { display: grid; grid-template-columns: repeat(3, 1fr); gap: 7mm; margin: 2mm 6mm 0; }
+.phones figure { margin: 0; }
+.phones figcaption { text-align: center; font-size: 8pt; color: var(--ink-soft); margin-top: 2.5mm; }
+.phone img { aspect-ratio: 390 / 760; object-fit: cover; object-position: top; width: 100%; }
+.scores { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4mm; margin-top: 7mm; }
+.score { text-align: center; padding: 4mm 2mm; border-radius: 3mm; background: var(--sand-2); }
+.score b { display: block; font-family: var(--serif); font-weight: 400; font-size: 22pt; line-height: 1; color: var(--leaf); }
+.score span { font-size: 7.8pt; color: var(--ink-soft); }
+
+/* ---------- 5. Redes ---------- */
+.pillars { display: grid; grid-template-columns: 1fr; gap: 0; margin-top: 6mm; }
+.pillars li { display: grid; grid-template-columns: 12mm 46mm 1fr; gap: 5mm; padding: 3.6mm 0; border-top: 1px solid var(--line); align-items: baseline; }
+.pillars li:last-child { border-bottom: 1px solid var(--line); }
+.pillars .h3 { font-size: 13.5pt; margin: 0; }
+.pillars p { font-size: 9.2pt; color: var(--ink-soft); }
+.channels { display: grid; grid-template-columns: repeat(3, 1fr); gap: 5mm; margin-top: 8mm; }
+.channels .card p { font-size: 9pt; color: var(--ink-soft); }
+.channels .card p.h3 { font-size: 15pt; color: var(--ink); margin-bottom: 1.6mm; }
+.channels .card p.tagline { font-size: 7pt; color: var(--espresso-text); }
+.sign .fill { text-transform: none; letter-spacing: 0; }
+.tagline { font-size: 7pt; letter-spacing: .18em; text-transform: uppercase; color: var(--espresso-text); margin-bottom: 2mm; }
+
+/* ---------- 6. Calendario ---------- */
+.cal { width: 100%; border-collapse: separate; border-spacing: 1.6mm; margin: 5mm -1.6mm 0; table-layout: fixed; width: calc(100% + 3.2mm); }
+.cal th { font-size: 7pt; letter-spacing: .16em; text-transform: uppercase; color: var(--ink-soft); font-weight: 500; text-align: left; padding: 0 1.5mm 1mm; }
+.cal td { vertical-align: top; height: 30mm; background: var(--sand); border-radius: 2mm; padding: 2mm; font-size: 7.6pt; line-height: 1.35; color: var(--ink-soft); }
+.cal td.off { background: transparent; border: 1px dashed var(--line); }
+.cal .d { display: block; font-family: var(--serif); font-size: 10pt; color: var(--ink); margin-bottom: 1mm; }
+.pill { display: inline-block; font-size: 6.3pt; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; border-radius: 99px; padding: .5mm 1.8mm; margin-bottom: .8mm; color: #fff; }
+.p-reel { background: var(--espresso); }
+.p-car { background: var(--leaf); }
+.p-foto { background: var(--ink); }
+.p-goo { background: #6E7F99; }
+.p-shoot { background: transparent; color: var(--espresso-text); border: 1px solid var(--espresso); }
+.legend { display: flex; flex-wrap: wrap; gap: 4mm; margin-top: 4mm; font-size: 8pt; color: var(--ink-soft); align-items: center; }
+
+/* ---------- 7. Planes ---------- */
+.plans { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4.5mm; margin-top: 7mm; align-items: stretch; }
+.plan { border-radius: 3.5mm; padding: 6mm 5mm 5mm; background: var(--sand); display: flex; flex-direction: column; position: relative; }
+.plan--hl { background: var(--ink); color: var(--paper); }
+.plan--hl .soft, .plan--hl li { color: rgba(247,244,239,.8); }
+.plan__badge { position: absolute; top: -3mm; left: 5mm; background: var(--espresso); color: #fff; font-size: 6.8pt; letter-spacing: .16em; text-transform: uppercase; padding: 1mm 3mm; border-radius: 99px; }
+.plan__name { font-family: var(--serif); font-size: 17pt; line-height: 1; margin-bottom: 1.5mm; }
+.plan__for { font-size: 8.4pt; min-height: 11mm; }
+.plan__price { font-family: var(--serif); font-size: 34pt; line-height: 1; margin: 4mm 0 1mm; }
+.plan__price small { font-family: var(--sans); font-size: 8pt; margin-left: 1mm; }
+.plan--hl .plan__price { color: var(--crema); }
+.plan ul { margin-top: 4mm; border-top: 1px solid var(--line); }
+.plan--hl ul { border-color: rgba(247,244,239,.18); }
+.plan li { font-size: 8.4pt; line-height: 1.4; padding: 1.7mm 0 1.7mm 4.5mm; border-bottom: 1px solid var(--line); position: relative; }
+.plan--hl li { border-color: rgba(247,244,239,.14); }
+.plan li::before { content: "·"; position: absolute; left: .5mm; top: 1.2mm; font-weight: 700; color: var(--espresso); }
+.plan--hl li::before { color: var(--crema); }
+.plan li b { font-weight: 600; color: inherit; }
+.notes { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm 8mm; margin-top: 7mm; font-size: 8.4pt; color: var(--ink-soft); }
+.notes li { padding-left: 4mm; position: relative; }
+.notes li::before { content: "—"; position: absolute; left: 0; color: var(--espresso); }
+
+/* ---------- 8. Próximos pasos ---------- */
+.steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4mm; margin-top: 6mm; }
+.steps li { border-top: 2px solid var(--espresso); padding-top: 3mm; }
+.steps .h3 { font-size: 12.5pt; }
+.steps p { font-size: 8.6pt; color: var(--ink-soft); }
+.need { display: grid; grid-template-columns: 1fr 1fr; gap: 2.4mm 8mm; margin-top: 4mm; font-size: 9pt; }
+.need li { padding: 2.2mm 0 2.2mm 7mm; border-bottom: 1px solid var(--line); position: relative; }
+.need li::before { content: ""; position: absolute; left: 0; top: 3mm; width: 3.2mm; height: 3.2mm; border: 1px solid var(--ink-soft); border-radius: .8mm; }
+.sign { display: grid; grid-template-columns: 1fr 1fr; gap: 10mm; margin-top: 6mm; }
+.sign .box { border: 1px solid var(--line); border-radius: 3mm; padding: 4mm 5mm; height: 38mm; display: flex; flex-direction: column; }
+.sign .box p:first-child { font-size: 7pt; letter-spacing: .18em; text-transform: uppercase; color: var(--espresso-text); }
+.sign .line { margin-top: auto; border-top: 1px dotted var(--ink-soft); padding-top: 1.5mm; font-size: 7.6pt; color: var(--ink-soft); display: flex; justify-content: space-between; }
+.choice { display: flex; gap: 6mm; margin-top: 3mm; font-size: 9pt; }
+.choice span::before { content: ""; display: inline-block; width: 3.4mm; height: 3.4mm; border: 1px solid var(--ink); border-radius: 50%; margin-right: 1.6mm; vertical-align: -.5mm; }
+</style>
+</head>
+<body>
+
+<!-- ============ 1 · PORTADA ============ -->
+<section class="page cover">
+  <div class="cover__img">
+    <div class="cover__brand"><b>NEPO</b><span>Propuesta · Noviembre 2026</span></div>
+    <img src="../assets/img/espresso-portafiltro-1130.jpg" alt="" style="object-position: 62% 50%" />
+  </div>
+  <div class="cover__body">
+    <p class="eyebrow">Para NEPO Café · Pozuelo Coffee House</p>
+    <h1 class="cover__title">Vuestra web nueva<br /><em>y el día a día de NEPO,</em><br />contado cada semana</h1>
+    <p class="cover__lead">Os traemos la web ya hecha, como regalo, y una propuesta para llevar vuestras redes sociales cada mes, para que lo que pasa en la barra se vea fuera.</p>
+    <div class="cover__meta">
+      <div><p>Preparado por</p><p><span class="fill">nombre / equipo</span></p></div>
+      <div><p>Contacto</p><p><span class="fill">teléfono · email</span></p></div>
+      <div><p>Fecha</p><p>24 de noviembre de 2026</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 2 · EN UNA PÁGINA ============ -->
+<section class="page">
+  <div class="top"><b>NEPO</b><span>En una página</span></div>
+  <p class="eyebrow">La propuesta</p>
+  <h2 class="h1">Lo que hacéis en la barra<br /><em>merece verse fuera</em></h2>
+
+  <div class="three">
+    <div class="card">
+      <p class="big">01</p>
+      <p class="h3">Web nueva, de regalo</p>
+      <p class="small soft">Hecha a medida para NEPO, con vuestras fotos y vuestra carta. Está terminada: la podéis ver hoy.</p>
+    </div>
+    <div class="card">
+      <p class="big">02</p>
+      <p class="h3">Redes cada mes</p>
+      <p class="small soft">Fotos, vídeos, publicaciones y ficha de Google. Nosotros venimos, grabamos, publicamos y os contamos cómo va.</p>
+    </div>
+    <div class="card">
+      <p class="big">03</p>
+      <p class="h3">Sin ataduras largas</p>
+      <p class="small soft">Tres meses para ver resultados y, a partir de ahí, mes a mes. Si no os convence, lo dejamos.</p>
+    </div>
+  </div>
+
+  <p class="eyebrow">Lo que hemos visto</p>
+  <ul class="seen">
+    <li><p class="h3"><span class="tick">✓</span> Una marca con mucho que contar</p><p class="small soft">Café de especialidad, pour over, brioche hojaldrado hecho en casa, tostadas de masa madre y un Solete de la Guía Repsol 2023.</p></li>
+    <li><p class="h3"><span class="tick">✓</span> Una estética que ya es vuestra</p><p class="small soft">Fachada blanca, sillas amarillas, tazas de colores, latte art. Las fotos que habéis publicado tienen calidad: hay material y hay estilo.</p></li>
+    <li><p class="h3"><span class="cross">✕</span> Redes con poca constancia</p><p class="small soft">En los últimos años las publicaciones en @nepo.cafe han sido muy espaciadas. Quien os descubre en Instagram no ve la carta nueva, los horarios ni lo que pasa hoy en la barra.</p></li>
+    <li><p class="h3"><span class="cross">✕</span> La carta, solo en PDF</p><p class="small soft">En el móvil un PDF se lee mal y Google apenas lo entiende. Cuando alguien busca «tostadas» o «café de especialidad» en Pozuelo, una carta en la web cuenta mucho más.</p></li>
+  </ul>
+
+  <div class="foot"><span>Propuesta para NEPO Café</span><span>2</span></div>
+</section>
+
+<!-- ============ 3 · LA WEB ============ -->
+<section class="page">
+  <div class="top"><b>NEPO</b><span>01 · La web</span></div>
+  <p class="eyebrow">Nuestro regalo</p>
+  <h2 class="h2">Una web a la altura <em>de vuestro café</em></h2>
+  <p class="lead">Diseñada solo para NEPO: el crema y el espresso de vuestra marca, vuestras fotos y un vídeo de café que se sirve a medida que bajas por la página.</p>
+
+  <div class="shot" style="margin-top: 7mm"><img src="img/web-hero-video.jpg" alt="" style="height: 96mm; width: 100%; object-fit: cover; object-position: top" /></div>
+
+  <ul class="feat">
+    <li><span class="num">01</span><div><p class="h3">Cuatro páginas claras</p><p>Inicio, La Carta, Nosotros y Visítanos. Cada una con su dirección propia para que Google la encuentre.</p></div></li>
+    <li><span class="num">02</span><div><p class="h3">La carta completa, con precios</p><p>Los 42 productos de la carta en la web, por categorías. Se lee bien en el móvil y Google la entiende.</p></div></li>
+    <li><span class="num">03</span><div><p class="h3">«Abierto ahora», en directo</p><p>La web dice si estáis abiertos y hasta qué hora, y avisa sola del horario de Navidad.</p></div></li>
+    <li><span class="num">04</span><div><p class="h3">Cómo llegar en un toque</p><p>Dirección, teléfono, mapa y botón «Cómo llegar» a Google Maps desde el móvil.</p></div></li>
+    <li><span class="num">05</span><div><p class="h3">Pensada para Google</p><p>Preparada para búsquedas como «cafetería de especialidad en Pozuelo»: textos, horarios y dirección en el formato que Google lee.</p></div></li>
+    <li><span class="num">06</span><div><p class="h3">Legal y sin sorpresas</p><p>Aviso de cookies correcto, aviso legal y privacidad. Sin publicidad ni rastreadores.</p></div></li>
+  </ul>
+
+  <div class="foot"><span>Propuesta para NEPO Café</span><span>3</span></div>
+</section>
+
+<!-- ============ 4 · LA WEB EN EL MÓVIL ============ -->
+<section class="page">
+  <div class="top"><b>NEPO</b><span>01 · La web</span></div>
+  <p class="eyebrow">En el móvil, donde os buscan</p>
+  <h2 class="h2">Hecha primero <em>para el móvil</em></h2>
+  <p class="lead">Quien busca dónde tomar un café suele hacerlo desde el móvil y con prisa. Todo está a dos toques: la carta, el horario y cómo llegar.</p>
+
+  <div class="phones" style="margin-top: 8mm">
+    <figure><div class="phone"><img src="img/movil-inicio.jpg" alt="" /></div><figcaption>Inicio</figcaption></figure>
+    <figure><div class="phone"><img src="img/movil-carta.jpg" alt="" /></div><figcaption>La Carta</figcaption></figure>
+    <figure><div class="phone"><img src="img/movil-visitanos.jpg" alt="" /></div><figcaption>Visítanos</figcaption></figure>
+  </div>
+
+  <p class="eyebrow" style="margin-top: 9mm">Medido, no prometido</p>
+  <p class="small soft">Resultados de Google Lighthouse, la herramienta de Google para evaluar webs, en la prueba de móvil:</p>
+  <div class="scores">
+    <div class="score"><b>100</b><span>Accesibilidad</span></div>
+    <div class="score"><b>100</b><span>Buenas prácticas</span></div>
+    <div class="score"><b>100</b><span>SEO</span></div>
+    <div class="score"><b>&lt;&nbsp;2&nbsp;s</b><span>Carga en el móvil</span></div>
+  </div>
+  <p class="small soft" style="margin-top: 3mm">Medido antes de publicar. Lo volveremos a medir con la web ya en nepo.cafe.</p>
+
+  <div class="foot"><span>Propuesta para NEPO Café</span><span>4</span></div>
+</section>
+
+<!-- ============ 5 · REDES: QUÉ CONTARÍAMOS ============ -->
+<section class="page">
+  <div class="top"><b>NEPO</b><span>02 · Redes sociales</span></div>
+  <p class="eyebrow">Qué contaríamos</p>
+  <h2 class="h2">Cinco historias <em>que ya tenéis</em></h2>
+  <p class="lead">No hace falta inventar nada: NEPO tiene historias de sobra. Las contamos con constancia, con vuestro tono y con la estética que ya es vuestra.</p>
+
+  <ul class="pillars">
+    <li><span class="num">01</span><p class="h3">La barra</p><p>Extracciones, latte art, pour over, el grano de la semana. El oficio de vuestros baristas en vídeos cortos.</p></li>
+    <li><span class="num">02</span><p class="h3">La cocina</p><p>Tostadas de masa madre, el brioche saliendo del horno, platos nuevos y opciones sin gluten. Lo que da hambre al verlo.</p></li>
+    <li><span class="num">03</span><p class="h3">El momento NEPO</p><p>La primera taza de la mañana, la terraza, los vecinos de siempre. Un momento analógico en un mundo con prisas.</p></li>
+    <li><span class="num">04</span><p class="h3">Cultura del café</p><p>Origen, tueste y cómo se prepara un buen café, explicado fácil en carruseles que la gente guarda y comparte.</p></li>
+    <li><span class="num">05</span><p class="h3">Comunidad y novedades</p><p>El Solete Repsol, el equipo, @nepo_mvmt_studio, horarios especiales y fechas señaladas como Navidad.</p></li>
+  </ul>
+
+  <div class="channels">
+    <div class="card"><p class="tagline">Principal</p><p class="h3">Instagram</p><p>Reels, carruseles, fotos y stories. Es donde os buscan y donde se decide si venir.</p></div>
+    <div class="card"><p class="tagline">El que más se olvida</p><p class="h3">Google</p><p>Vuestra ficha de Google Maps: fotos al día, publicaciones, horarios y respuesta a reseñas.</p></div>
+    <div class="card"><p class="tagline">Opcional</p><p class="h3">TikTok</p><p>Los mismos vídeos, adaptados, para llegar a gente que todavía no os conoce.</p></div>
+  </div>
+
+  <div class="foot"><span>Propuesta para NEPO Café</span><span>5</span></div>
+</section>
+
+<!-- ============ 6 · UN MES DE EJEMPLO ============ -->
+<section class="page">
+  <div class="top"><b>NEPO</b><span>02 · Redes sociales</span></div>
+  <p class="eyebrow">Ejemplo · Plan Recomendado</p>
+  <h2 class="h2">Así sería <em>diciembre</em></h2>
+  <p class="lead">Un mes real, con las fechas que ya tenéis marcadas. Las stories van aparte: varias por semana, con lo que pase ese día.</p>
+
+  <table class="cal">
+    <thead><tr><th>Lun</th><th>Mar</th><th>Mié</th><th>Jue</th><th>Vie</th><th>Sáb</th><th>Dom</th></tr></thead>
+    <tbody>
+      <tr>
+        <td class="off"></td>
+        <td><span class="d">1</span><span class="pill p-shoot">Grabación</span><br />Fotos y vídeo en el local para la primera quincena</td>
+        <td><span class="d">2</span><span class="pill p-reel">Reel</span><br />El brioche de la casa, del horno a la mesa</td>
+        <td><span class="d">3</span></td>
+        <td><span class="d">4</span><span class="pill p-car">Carrusel</span><br />La carta, plato a plato</td>
+        <td><span class="d">5</span><span class="pill p-goo">Google</span><br />Fotos nuevas y horario de diciembre</td>
+        <td><span class="d">6</span></td>
+      </tr>
+      <tr>
+        <td><span class="d">7</span></td>
+        <td><span class="d">8</span><span class="pill p-reel">Reel</span><br />Pour over: un café hecho a mano</td>
+        <td><span class="d">9</span></td>
+        <td><span class="d">10</span><span class="pill p-foto">Foto</span><br />La terraza en invierno</td>
+        <td><span class="d">11</span><span class="pill p-car">Carrusel</span><br />Del cafeto a la taza</td>
+        <td><span class="d">12</span></td>
+        <td><span class="d">13</span></td>
+      </tr>
+      <tr>
+        <td><span class="d">14</span><span class="pill p-shoot">Grabación</span><br />Segunda sesión: equipo y clientes</td>
+        <td><span class="d">15</span><span class="pill p-reel">Reel</span><br />Un día en la barra de NEPO</td>
+        <td><span class="d">16</span></td>
+        <td><span class="d">17</span><span class="pill p-car">Carrusel</span><br />Horarios de Navidad: el 24 hasta las 15:00, el 25 cerrado</td>
+        <td><span class="d">18</span><span class="pill p-goo">Google</span><br />Horario especial en Maps</td>
+        <td><span class="d">19</span><span class="pill p-foto">Foto</span><br />Mesa de desayuno</td>
+        <td><span class="d">20</span></td>
+      </tr>
+      <tr>
+        <td><span class="d">21</span><span class="pill p-reel">Reel</span><br />Latte art a cámara lenta</td>
+        <td><span class="d">22</span></td>
+        <td><span class="d">23</span><span class="pill p-reel">Reel</span><br />Tostadas para los desayunos de fiestas</td>
+        <td><span class="d">24</span><span class="pill p-foto">Foto</span><br />Felices fiestas desde la barra</td>
+        <td class="off"><span class="d">25</span>Cerrado</td>
+        <td><span class="d">26</span></td>
+        <td><span class="d">27</span><span class="pill p-reel">Reel</span><br />El año de NEPO en 30 segundos</td>
+      </tr>
+      <tr>
+        <td><span class="d">28</span></td>
+        <td><span class="d">29</span></td>
+        <td><span class="d">30</span><span class="pill p-goo">Google</span><br />Respuesta a reseñas del mes</td>
+        <td><span class="d">31</span></td>
+        <td class="off"></td>
+        <td class="off"></td>
+        <td class="off"></td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="legend">
+    <span><span class="pill p-reel">Reel</span> vídeo corto</span>
+    <span><span class="pill p-car">Carrusel</span> varias fotos o textos</span>
+    <span><span class="pill p-foto">Foto</span> publicación</span>
+    <span><span class="pill p-goo">Google</span> ficha de Maps</span>
+    <span><span class="pill p-shoot">Grabación</span> en el local</span>
+  </div>
+
+  <div class="foot"><span>Propuesta para NEPO Café</span><span>6</span></div>
+</section>
+
+<!-- ============ 7 · PLANES ============ -->
+<section class="page">
+  <div class="top"><b>NEPO</b><span>03 · Planes</span></div>
+  <p class="eyebrow">Gestión mensual</p>
+  <h2 class="h2">Tres planes, <em>una sola cuota</em></h2>
+  <p class="lead">Todos incluyen el cuidado de la web. Elegís el ritmo y lo podéis cambiar cuando queráis.</p>
+
+  <div class="plans">
+    <div class="plan">
+      <p class="plan__name">Básico</p>
+      <p class="plan__for soft">Para volver a estar presentes, con constancia.</p>
+      <p class="plan__price">240&nbsp;€<small class="soft">/ mes</small></p>
+      <ul>
+        <li><b>8 publicaciones</b> al mes en Instagram (4 reels)</li>
+        <li>Stories <b>2 días por semana</b></li>
+        <li><b>1 sesión</b> de fotos y vídeo al mes en el local</li>
+        <li>Textos, hashtags y calendario mensual</li>
+        <li>Mantenimiento de la web: carta, precios y horarios</li>
+        <li>Resumen mensual de resultados</li>
+      </ul>
+    </div>
+    <div class="plan plan--hl">
+      <span class="plan__badge">Recomendado</span>
+      <p class="plan__name">Recomendado</p>
+      <p class="plan__for soft">Para que NEPO sea la cafetería que se ve en Pozuelo.</p>
+      <p class="plan__price">390&nbsp;€<small>/ mes</small></p>
+      <ul>
+        <li><b>12 publicaciones</b> al mes en Instagram (6 reels)</li>
+        <li>Stories <b>3 días por semana</b></li>
+        <li><b>2 sesiones</b> de fotos y vídeo al mes</li>
+        <li><b>Ficha de Google</b>: fotos, publicaciones y respuesta a reseñas</li>
+        <li>Respuesta a comentarios y mensajes (lun–vie)</li>
+        <li>Mantenimiento de la web incluido</li>
+        <li>Informe mensual y reunión de 30 min</li>
+      </ul>
+    </div>
+    <div class="plan">
+      <p class="plan__name">Completo</p>
+      <p class="plan__for soft">Para crecer: llegar a gente nueva cada mes.</p>
+      <p class="plan__price">590&nbsp;€<small class="soft">/ mes</small></p>
+      <ul>
+        <li>Todo lo del plan Recomendado</li>
+        <li><b>16 publicaciones</b> al mes (8 reels)</li>
+        <li><b>TikTok</b> con los vídeos adaptados</li>
+        <li><b>4 sesiones</b> de fotos y vídeo al mes</li>
+        <li>Gestión de <b>anuncios</b> en Instagram (inversión aparte)</li>
+        <li>Colaboraciones con creadores de la zona</li>
+        <li>Fotos de la carta para web y Google cada trimestre</li>
+      </ul>
+    </div>
+  </div>
+
+  <ul class="notes">
+    <li>Precios sin IVA (21&nbsp;%). Facturación mensual.</li>
+    <li>Permanencia de 3 meses; después, mes a mes con 30 días de aviso.</li>
+    <li>La inversión en anuncios la paga NEPO directamente a Meta, sin comisión nuestra.</li>
+    <li>Las fotos y vídeos que hagamos son vuestros para usarlos donde queráis.</li>
+    <li>Sin plan, los cambios puntuales en la web se presupuestan aparte.</li>
+    <li>Podéis cambiar de plan cualquier mes.</li>
+  </ul>
+
+  <div class="foot"><span>Propuesta para NEPO Café · Precios válidos 30 días</span><span>7</span></div>
+</section>
+
+<!-- ============ 8 · CÓMO EMPEZAMOS ============ -->
+<section class="page">
+  <div class="top"><b>NEPO</b><span>04 · Siguientes pasos</span></div>
+  <p class="eyebrow">Cómo empezamos</p>
+  <h2 class="h2">En tres semanas, <em>en marcha</em></h2>
+
+  <ol class="steps">
+    <li><span class="num">Semana 1</span><p class="h3">Puesta a punto</p><p>Repasamos juntos la web, nos dais los accesos y hacemos la primera sesión de fotos y vídeo.</p></li>
+    <li><span class="num">Semana 2</span><p class="h3">Web publicada</p><p>Publicamos la web en nepo.cafe y ponemos al día vuestra ficha de Google.</p></li>
+    <li><span class="num">Semana 3</span><p class="h3">Primeras publicaciones</p><p>Empieza el calendario: os lo enseñamos antes y aprobáis lo que sale.</p></li>
+    <li><span class="num">Mes 1</span><p class="h3">Primer informe</p><p>Qué ha funcionado y qué cambiamos. Así cada mes.</p></li>
+  </ol>
+
+  <p class="eyebrow" style="margin-top: 9mm">Lo que necesitamos de vosotros</p>
+  <ul class="need">
+    <li>Acceso a Instagram (y a Google, si hay plan Recomendado o Completo)</li>
+    <li>Una persona de contacto para dudas y aprobaciones</li>
+    <li>Permiso para usar vuestras fotos en la web y las redes</li>
+    <li>Fotos del interior, la terraza y el equipo (o las hacemos nosotros)</li>
+    <li>Razón social y NIF para el aviso legal de la web</li>
+    <li>Confirmar los alérgenos y la bebida vegetal de la carta</li>
+  </ul>
+
+  <p class="eyebrow" style="margin-top: 9mm">Conformidad</p>
+  <p class="small soft">Plan elegido:</p>
+  <div class="choice"><span>Básico · 240 €/mes</span><span>Recomendado · 390 €/mes</span><span>Completo · 590 €/mes</span></div>
+  <div class="sign">
+    <div class="box"><p>Por NEPO Café</p><div class="line"><span>Nombre y firma</span><span>Fecha</span></div></div>
+    <div class="box"><p>Por <span class="fill" style="min-width: 40mm">vuestro nombre</span></p><div class="line"><span>Nombre y firma</span><span>Fecha</span></div></div>
+  </div>
+
+  <div class="foot"><span>Contacto: <span class="fill" style="min-width: 70mm">teléfono · email</span></span><span>8</span></div>
+</section>
+
+</body>
+</html>
